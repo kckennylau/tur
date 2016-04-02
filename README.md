@@ -58,7 +58,7 @@ This code can be compressed to `0'_'_L10'.'=R0110L1101H`, per above.
 
 The tape is initialized as `110011`.
 
-Initially, the machine is at state `0`, and the pointer is at the first `1`. The name of the states can be anything, using the above format (`a`, `'b`, `"cde"`). The state `H` is reserved.
+Initially, the machine is at state `0`, and the pointer is at the first `1`. The name of the states can be **anything**, using the above format (`a`, `'b`, `"cde"`). **The state `H` is reserved**.
 
 The special-sequence `'.` means that it will match every character. A complete table of such special-sequences can be found below.
 
@@ -98,7 +98,7 @@ It then writes a `1` (`110100`), and then halts.
 
 #Exceptions
 
-As demonstrated above, `1 0 1 H` only have 4 units, because it is a halt command.
+As demonstrated above, `1 0 1 H` **only have 4 units**, because it is a halt command.
 
 There is another exception, where you can actually write something just before it halts. The state H is reserved for this purpose. For example, you would like to draw a smile if it halts at state 0. Then, you would write H 0 ":)" in the code. This is also the only instance where you can write more than one characters.
 
@@ -144,7 +144,7 @@ special sequence | equivalent regex
 `'u` | [A-Z]
 `'a` | [0-9a-zA-Z]
 `'b` | [_0-9a-zA-Z]
-`'_` | <space>
+`'_` | matches a space
 `'=` | do not change
 `'.` | matches all (use it as a catch-all for the exceptions)
 
@@ -163,7 +163,7 @@ Thus, the ROT13 is as follows:
 
 Compressed to become `0'u"N-ZA-M"R0H0":)"`
 
-(If it fails to match any line, it will halt.)
+**(If it fails to match any line, it will halt.)**
 
 #Stacks
 
@@ -171,7 +171,6 @@ This language also comes with a stack, as well as a clipboard that is initialize
 
 special sequence | equivalent regex
 --- | ---
-
 `'x` | cut (replace current symbol with space after copying it to the clipboard)
 `'c` | copy (do not change current symbol, and copy to clipboard)
 `'v` | paste (paste from clipboard)
