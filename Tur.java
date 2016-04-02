@@ -199,9 +199,14 @@ public class Tur {
 				i += 3;
 			}else{
 				String next_direction = (segments.size()>i+3)?segments.get(i+3):"r";
-				String next_state = (segments.size()>i+4)?segments.get(i+4):"H";
-				temp.add(new String[]{current_symbol,next_symbol,next_direction,next_state});
-				i += 5;
+				if(next_direction.equals("H")){
+					temp.add(new String[]{current_symbol,next_symbol,"+=","H"});
+					i += 4;
+				}else{
+					String next_state = (segments.size()>i+4)?segments.get(i+4):"H";
+					temp.add(new String[]{current_symbol,next_symbol,next_direction,next_state});
+					i += 5;
+				}
 			}
 			this.instructions.put(current_state, temp);
 		}
