@@ -48,6 +48,7 @@ All whitespace characters will be ignored, except space which will not be ignore
 <current_state> <current_symbol> <new_symbol> <new_direction> <new_state>
 
 We shall use the following code for discussion:
+
     0 '_ '_ L 1
     0 '. '= R 0
     1 1 0 L 1
@@ -116,6 +117,8 @@ For reference, this is the code to detect whether a number in binary is divisibl
 
 #The table of special sequences
 
+special sequence | equivalent regex
+--- | ---
 `'d` | [0-9]
 `'1` | [1-9]
 `'2` | [01]
@@ -166,10 +169,13 @@ Compressed to become `0'u"N-ZA-M"R0H0":)"`
 
 This language also comes with a stack, as well as a clipboard that is initialized to a space.
 
+special sequence | equivalent regex
+--- | ---
+
 `'x` | cut (replace current symbol with space after copying it to the clipboard)
 `'c` | copy (do not change current symbol, and copy to clipboard)
 `'v` | paste (paste from clipboard)
-
+ | 
 `',` | push into stack without destroying the current symbol
 `'.` | pop from a stack, replacing the current symbol (halts if stack is empty)
 `';` | duplicate without destroying the current symbol
